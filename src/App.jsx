@@ -1,31 +1,33 @@
 /** @format */
 import teamDB from "../teamDB.json";
 import React, { useState, useEffect } from "react";
-
+import { v4 as randomID } from "uuid";
 import "./App.css";
 // import Header from "./Header";
 import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 
 function App() {
-	// const LOCAL_STORAGE_KEY = "contacts";
-	const [contacts, setContacts] = useState([teamDB]);
+	const LOCAL_STORAGE_KEY = "contacts";
+
+	const [contacts, setContacts] = useState([...teamDB.contacts]);
 	const [updatedContacts, setUpdatedContacts] = useState(contacts);
 
 	const addContactHandler = (contactObj) => {
 		// console.log(contactObj);
-		const updatedContacts = [{ ...contactObj }, ...contacts];
-		console.log("👉 👉 / updatedContacts", updatedContacts);
+		const updatedContacts = [{ id: randomID(), ...contactObj }, ...contacts];
+		// console.log("👉 👉 / updatedContacts", updatedContacts);
 		setContacts(updatedContacts);
 		setUpdatedContacts(updatedContacts);
 	};
 
 	const removeContactHandler = (id) => {
-		const newContactList = contacts.filter((contact) => {
+		const newContactList = updatedContacts.filter((contact) => {
 			return contact.id !== id;
 		});
 
 		setContacts(newContactList);
+		setUpdatedContacts(newContactList);
 	};
 
 	// useEffect(() => {
