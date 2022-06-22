@@ -10,7 +10,7 @@ const ContactList = ({ contacts, removeContact }) => {
 	};
 	const renderContactList = contacts.map((contact, index) => {
 		// console.log("👉 👉 / contact", contact);
-		return <ContactCard contact={contact} deleteContact={deleteContacHandler} key={index} />;
+		return <ContactCard contact={contact} deleteContact={deleteContacHandler} key={contact.name + index} />;
 	});
 	return <div className="ui celled list">{renderContactList}</div>;
 };
