@@ -8,7 +8,7 @@ import AddContact from "./components/AddContact";
 import ContactList from "./components/ContactList";
 
 function App() {
-	const LOCAL_STORAGE_KEY = "contacts";
+	// const LOCAL_STORAGE_KEY = "contacts";
 
 	const [contacts, setContacts] = useState([...teamDB.contacts]);
 	const [updatedContacts, setUpdatedContacts] = useState(contacts);
